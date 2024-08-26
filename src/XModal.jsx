@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './App.css';
@@ -41,12 +40,12 @@ function XModal() {
     if (!phone) {
       errors.phone = "Phone number is required.";
     } else if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
-      alert("Invalid phone number. Please enter a 10-digit phone number.");
+      errors.phone = "Invalid phone number. Please enter a 10-digit phone number.";
     }
     if (!dob) {
       errors.dob = "Date of birth is required.";
     } else if (new Date(dob) > new Date()) {
-      alert("Invalid date of birth. Please enter a valid date.");
+      errors.dob = "Invalid date of birth. Please enter a valid date.";
     }
 
     return errors;
@@ -68,7 +67,7 @@ function XModal() {
 
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        onRequestClose={closeModal}  // Closes modal on clicking outside or pressing ESC
         className="modal-content"
         overlayClassName="overlay"
       >
@@ -82,7 +81,7 @@ function XModal() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            {errors.username && <p>{errors.username}</p>}
+            {errors.username && <p className="error">{errors.username}</p>}
           </div>
           <div>
             <label htmlFor="email">Email:</label>
@@ -92,7 +91,7 @@ function XModal() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {errors.email && <p>{errors.email}</p>}
+            {errors.email && <p className="error">{errors.email}</p>}
           </div>
           <div>
             <label htmlFor="phone">Phone Number:</label>
@@ -102,7 +101,7 @@ function XModal() {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
-            {errors.phone && <p>{errors.phone}</p>}
+            {errors.phone && <p className="error">{errors.phone}</p>}
           </div>
           <div>
             <label htmlFor="dob">Date of Birth:</label>
@@ -112,10 +111,9 @@ function XModal() {
               value={dob}
               onChange={(e) => setDob(e.target.value)}
             />
-            {errors.dob && <p>{errors.dob}</p>}
+            {errors.dob && <p className="error">{errors.dob}</p>}
           </div>
           <button type="submit" className="submit-button">Submit</button>
-          <button type="button" onClick={closeModal}>Close</button>
         </form>
       </Modal>
     </div>
