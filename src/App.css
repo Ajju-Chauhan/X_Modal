@@ -1,27 +1,81 @@
 .modal-content {
   background-color: white;
   padding: 20px;
-  border-radius: 4px;
-  width: 300px;
-  
-  margin: auto;
-
+  border-radius: 8px;
+  width: 40vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .overlay {
-  background-color: rgba(133, 123, 123, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   width: 100vw;
   height: 100vh;
-  padding-top: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 100%; /* Ensure the form takes the full width of the modal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > div {
+  width: 100%; /* Ensure each form field container takes the full width */
+  margin-bottom: 15px; /* Add some spacing between fields */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+  width: 100%; /* Make labels align with the input fields */
 }
 
 input {
-  display: block;
-  margin-bottom: 10px;
-  width: 100%;
+  width: 100%; /* Ensure input fields take up the full width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding in the width calculation */
 }
 
 p {
   color: red;
   font-size: 0.9em;
+  margin-top: 5px;
+  text-align: left; /* Align error messages to the left */
+  width: 100%; /* Ensure the error messages take up the full width */
+}
+
+.submit-button {
+  
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+ /* Ensure the submit button takes up the full width */
+ /* Include padding in the width calculation */
+  text-align: center;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
 }
