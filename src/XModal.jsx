@@ -40,12 +40,12 @@ function XModal() {
     if (!phone) {
       errors.phone = "Phone number is required.";
     } else if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
-      alert("Invalid phone number. Please enter a 10-digit phone number.");
+      errors.phone = "Invalid phone number. Please enter a 10-digit phone number.";
     }
     if (!dob) {
       errors.dob = "Date of birth is required.";
     } else if (new Date(dob) > new Date()) {
-      alert("Invalid date of birth. Please enter a valid date.");
+      errors.dob = "Invalid date of birth. Please enter a valid date.";
     }
 
     return errors;
