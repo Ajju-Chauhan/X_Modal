@@ -25,26 +25,22 @@ function App() {
 
     // Validate the form fields
     if (!formData.username) {
-      alert('Please fill out the Username field.');
-      return;
+      errors.formData.username = "Username is required.";
     }
-
-    if (!formData.email.includes('@')) {
-      alert('Invalid email. Please check your email address.');
-      return;
+    if (!formData.email) {
+      errors.formData.email = "Email is required.";
+    } else if (!email.includes('@')) {
+      errors.email = "Invalid email. Please check your email address.";
     }
-
-    if (formData.phone.length !== 10 || isNaN(formData.phone)) {
-      alert('Invalid phone number. Please enter a 10-digit phone number.');
-      return;
+    if (!formData.phone) {
+      
+    } else if (formData.phone.length !== 10 || !/^\d{10}$/.test(formData.phone)) {
+      alert("Invalid phone number. Please enter a 10-digit phone number.");
     }
-
-    const today = new Date();
-    const selectedDate = new Date(formData.dob);
-
-    if (selectedDate > today) {
-      alert('Invalid date of birth. Date cannot be in the future.');
-      return;
+    if (!formData.dob) {
+      errors.formData.dob = "Date of birth is required.";
+    } else if (new Date(formData.dob) > new Date()) {
+      alert("Invalid date of birth. Please enter a valid date.");
     }
 
     // If all validations pass, close the modal
